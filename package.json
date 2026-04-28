@@ -1,0 +1,67 @@
+{
+  "name": "@semore/acp-adapter",
+  "version": "0.0.1",
+  "description": "ACP (Agentic Commerce Protocol) Shared Payment Token orchestrator adapter — verify + mint SPT, merchant ack helpers.",
+  "license": "Apache-2.0",
+  "author": "Semore Founding Team <semore.hq@gmail.com>",
+  "homepage": "https://semore.net",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/semore-hq/acp-adapter.git"
+  },
+  "bugs": {
+    "url": "mailto:semore.hq@gmail.com"
+  },
+  "keywords": [
+    "acp",
+    "agentic-commerce",
+    "shared-payment-token",
+    "semore",
+    "payments",
+    "ai-agents"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "pnpm typecheck && pnpm test && bash ./scripts/opsec-scan.sh \"$PWD\" && pnpm build"
+  },
+  "peerDependencies": {
+    "hono": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "hono": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
